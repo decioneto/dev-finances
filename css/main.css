@@ -70,7 +70,7 @@ ion-icon {
 
 .card {
     background-color: #fff;
-    padding: 1rem;
+    padding: 1.5rem 1rem;
     text-align: left;
     border-radius: 4px;
     margin-bottom: 2rem;
@@ -87,6 +87,11 @@ ion-icon {
     color: var(--light-purple)
 }
 
+.card p {
+    color: var(--purple);
+    font-size: 2em;
+}
+
 .card ion-icon.income {
     color: var(--green);
 }
@@ -95,8 +100,17 @@ ion-icon {
     color: var(--red);
 }
 
-.card p {
-    color: var(--purple);
+.card#balanceTotal {
+    background-color:var(--green);
+    color: #fff !important;
+}
+
+.card#balanceTotal h3 {
+    color: #fff;
+}
+
+.card#balanceTotal p {
+    color: #fff;
     font-size: 2em;
 }
 
@@ -112,7 +126,7 @@ ion-icon {
     width: 100%;
     margin-top: 2rem;
     border-spacing: 0 0.5rem;
-    vertical-align: middle;
+    vertical-align: middle; 
 }
 
 #transaction .data-table thead th {
