@@ -17,6 +17,7 @@ body {
     font-family: 'Nunito Sans', sans-serif;
     color: #fff;
     background-color: var(--purple);
+    padding-bottom: 6rem;
 }
 
 .container {
@@ -38,6 +39,24 @@ body {
 
 ion-icon {
     font-size: 28px;
+}
+
+input {
+    outline: none;
+    border: 0;
+    border-radius: 4px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 15px;
+}
+
+button {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    border: 0;
+    border-radius: 4px;
+    outline: 0;
+    cursor: pointer;
 }
 
 @media (min-width: 800px) {
@@ -70,10 +89,22 @@ ion-icon {
 
 .card {
     background-color: #fff;
-    padding: 1.5rem 1rem;
+    padding: 1rem;
     text-align: left;
     border-radius: 4px;
     margin-bottom: 2rem;
+}
+
+.card.card-total {
+    background-color: var(--green);
+}
+
+.card.card-total h3 {
+    color: #fff;
+}
+
+.card.card-total p {
+    color: #fff;
 }
 
 .card .card-title {
@@ -87,11 +118,6 @@ ion-icon {
     color: var(--light-purple)
 }
 
-.card p {
-    color: var(--purple);
-    font-size: 2em;
-}
-
 .card ion-icon.income {
     color: var(--green);
 }
@@ -100,17 +126,8 @@ ion-icon {
     color: var(--red);
 }
 
-.card#balanceTotal {
-    background-color:var(--green);
-    color: #fff !important;
-}
-
-.card#balanceTotal h3 {
-    color: #fff;
-}
-
-.card#balanceTotal p {
-    color: #fff;
+.card p {
+    color: var(--purple);
     font-size: 2em;
 }
 
@@ -119,69 +136,263 @@ ion-icon {
 #transaction .new-transaction {
     color: var(--gold);
     text-decoration: none;
-    
+    cursor: pointer;
 }
 
-#transaction .data-table {
+#transaction #data-table {
     width: 100%;
     margin-top: 2rem;
     border-spacing: 0 0.5rem;
-    vertical-align: middle; 
+    vertical-align: middle;
 }
 
-#transaction .data-table thead th {
+#transaction #data-table thead th {
     padding: 1rem 2rem;
     margin: 0;
     text-align: left;
     background-color: var(--light-purple);
 }
 
-#transaction .data-table thead th:first-child {
+#transaction #data-table thead th:first-child {
     border-radius: 4px 0 0 4px;
 }
 
-#transaction .data-table thead th:last-child {
+#transaction #data-table thead th:last-child {
     border-radius: 0 4px 4px 0;
 }
 
-#transaction .data-table tbody tr {
+#transaction #data-table tbody tr {
     opacity: 0.7;
 }
 
-#transaction .data-table tbody tr:hover {
+#transaction #data-table tbody tr:hover {
     opacity: 1;
 }
 
-#transaction .data-table tbody td {
+#transaction #data-table tbody td {
     padding: 1rem 2rem;
     margin: 0;
     text-align: left;
     background-color: var(--light-purple);
 }
 
-#transaction .data-table tbody td:first-child {
+#transaction #data-table tbody td:first-child {
     border-radius: 4px 0 0 4px;
 }
 
-#transaction .data-table tbody td:last-child {
+#transaction #data-table tbody td:last-child {
     border-radius: 0 4px 4px 0;
 }
 
-#transaction .data-table tbody td.del-button  {
+#transaction #data-table tbody td.del-button  {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#transaction .data-table tbody td.del-button ion-icon {
+#transaction #data-table tbody td.del-button ion-icon {
     cursor: pointer;
     color: var(--red)
 }
 
-#transaction .data-table tbody td.expense {
+#transaction #data-table tbody td.expense {
     color: var(--red);
 }
 
-#transaction .data-table tbody td.income {
+#transaction #data-table tbody td.income {
     color: var(--green);
+}
+
+/******** Modal *********/
+
+.modal-backdrop {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 99;
+
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.modal-backdrop.active {
+    display: flex;
+}
+
+.modal {
+    position: relative;
+    width: min(600px, 70%);
+}
+
+.modal-header {
+    background-color:var(--purple);
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    position: relative;
+    border-radius: 4px 4px 0 0;
+}
+
+.modal-header span {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+.modal-header span:hover {
+    opacity: 1;
+}
+
+.modal-body {
+    background-color: var(--light-purple);
+    padding: 1rem 2rem;
+    border-radius: 0 0 4px 4px;
+    text-align: center;
+}
+
+.form-control {
+    width: 100%;
+    margin: 0.5rem auto;
+}
+
+.form-control input {
+    display: block;
+    width: 100%;
+}
+
+.form-control span {
+    display: block;
+}
+
+.form-control input {
+    padding: 0.875rem;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+}
+
+.slide-check {
+    flex: 1;
+    display: flex;
+    gap: 0.3rem;
+    margin-right: 1rem;
+    align-items: center;
+}
+
+.slide-check ion-icon {
+    font-size: 1.275rem;
+}
+
+.switch {
+    position: relative;
+    height: 30px;
+    width: 50px;
+    display: block;
+    border: 2px solid var(--purple);
+    background-color: #452988;
+    border-radius: 30px;
+}
+
+#input-switch {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.slider {
+    position: absolute;
+    top: 49.9%;
+    left: 0;
+    margin: auto 3px;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+    background: var(--green);
+    transition: 0.3s cubic-bezier(0.55, -0.41, 0.55, 1.56);
+    cursor: pointer;
+}
+
+.slider::before {
+    content: '';
+    border-bottom: 2px solid #fff;
+    display: block;
+    width: calc(100% - 10px);
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.slider::after {
+    content: '';
+    border-bottom: 2px solid #fff;
+    display: block;
+    width: calc(100% - 10px);
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+    border-radius: 1px;
+    transform-origin: center;
+    transition: opacity 0.2s;
+}
+
+#input-switch:checked + .slider {
+    left: 20px !important;
+    background: var(--red);
+}
+
+#input-switch:checked + .slider::after {
+    opacity: 0;
+}
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(10%) sepia(53%) saturate(3826%) hue-rotate(250deg) brightness(93%) contrast(109%);
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.actions button {
+    width: 100%;
+    padding: 0.8rem 0;
+    background-color: var(--green);
+    color: var(--purple);
+}
+
+.actions a {
+    width: 100%;
+    padding: 0.8rem 0;
+    color: var(--purple);
+    display: block;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+a.close {
+    background-color: var(--red);
+    color: #fff;
+}
+
+.actions button:hover {
+    filter: brightness(0.95);
 }

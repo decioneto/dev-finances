@@ -18,40 +18,40 @@
     <main class="container">
         <section id="balance">
             <h2 class="sr-only">Balanço</h2>
-            <div class="card" id="balanceIcomes"> 
+            <div class="card"> 
                 <div class="card-title">
                     <h3>Entradas</h3>
                     <ion-icon class="income" name="arrow-up-circle"></ion-icon>
                 </div>
                 <div class="card-body">
-                    <p>R$ 0,00</p>
+                    <p id="incomeDisplay">R$ 0,00</p>
                 </div>
             </div>
-            <div class="card" id="balanceExpenses">
+            <div class="card">
                 <div class="card-title">
                     <h3>Saídas</h3>
                     <ion-icon class="expense" name="arrow-down-circle"></ion-icon>
                 </div>
                 <div class="card-body">
-                    <p>R$ 0,00</p>
+                    <p id="expenseDisplay">R$ 0,00</p>
                 </div>
             </div>
-            <div class="card" id="balanceTotal">
+            <div class="card card-total">
                 <div class="card-title">
                     <h3>Total</h3>
-                    <img src="/img/icons/paid_black.svg" width="28">
+                    <img src="img/icons/paid_black.svg" width="28">
                 </div>
                 <div class="card-body">
-                    <p>R$ 0,00</p>
+                    <p  id="totalDisplay">R$ 0,00</p>
                 </div>
             </div>
         </section>
 
         <section id="transaction">
             <h2 class="sr-only">Transações</h2>
-            <a href="#" class="new-transaction">+ Nova transação</a>
+            <a class="new-transaction" onclick="Modal.open()">+ Nova transação</a>
 
-            <table class="data-table">
+            <table id="data-table">
                 <thead>
                     <tr>
                         <th>Descrição</th>
@@ -61,27 +61,49 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Luz</td>
-                        <td class="expense">- R$ 250,00</td>
-                        <td>21/03/2021</td>
-                        <td class="del-button"><ion-icon name="remove-circle-outline"></ion-icon></td>
-                    </tr>
-                    <tr>
-                        <td>Internet</td>
-                        <td class="expense">- R$ 130,00</td>
-                        <td>21/03/2021</td>
-                        <td class="del-button"><ion-icon name="remove-circle-outline"></ion-icon></td>
-                    </tr>
-                    <tr>
-                        <td>Site</td>
-                        <td class="income">R$ 1.500,00</td>
-                        <td>22/03/2021</td>
-                        <td class="del-button"><ion-icon name="remove-circle-outline"></ion-icon></td>
-                    </tr>
                 </tbody>
             </table>
         </section>
     </main>
+
+    <div class="modal-backdrop">
+        <div class="modal">
+            <div class="modal-header">
+                <span onclick="Modal.close()"><ion-icon name="close-outline"></ion-icon></span>
+                <h3>Nova Transação</h3>
+            </div>
+            <div class="modal-body">
+                <form action="" onsubmit="Form.submit(event)">
+                    <div class="form-control">
+                        <label for="description" class="sr-only">Descrição</label>
+                        <input type="text" id="description" placeholder="Descrição">
+                    </div>
+                    <div class="form-row">
+                        <div class="slide-check">
+                            <label for="input-switch" class="switch">
+                                <input type="checkbox" id="input-switch">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="form-control">
+                            <label for="amount" class="sr-only">Valor</label>
+                            <input type="number" id="amount" placeholder="Valor">
+                        </div>
+                    </div>
+                    <div class="form-control">
+                        <label for="date" class="sr-only">Data</label>
+                        <input type="date" id="date">
+                    </div>
+
+                    <div class="actions">
+                        <a class="close" onclick="Modal.close()">Cancelar</a>
+                        <button class="save">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
